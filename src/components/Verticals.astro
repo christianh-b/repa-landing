@@ -1,0 +1,64 @@
+---
+import { Boxes, Pill, Store, UtensilsCrossed } from 'lucide-react';
+
+const verticals = [
+  {
+    Icon: UtensilsCrossed,
+    title: 'Restaurantes y gastronomía',
+    text: 'Pedidos que salen calientes. Avisás cuando está listo y un repartidor pasa a retirarlo.',
+    example: '2 pizzas · 1,8 km · 12 min',
+  },
+  {
+    Icon: Store,
+    title: 'Kioscos y almacenes',
+    text: 'Envíos chicos y frecuentes sin pagar una flota propia. Ideal para el pedido del barrio.',
+    example: 'Bebidas y snacks · 0,9 km · 8 min',
+  },
+  {
+    Icon: Pill,
+    title: 'Farmacias y perfumerías',
+    text: 'Entregas con prueba de recepción: foto, firma y quién recibió, para pedidos que no se pueden perder.',
+    example: 'Receta + perfumería · 2,4 km · 15 min',
+  },
+  {
+    Icon: Boxes,
+    title: 'Comercios y distribuidoras',
+    text: 'Rutas con varias paradas en orden, bultos pesados y entregas a otros negocios durante el día.',
+    example: '6 paradas · 14 km · ruta de la mañana',
+  },
+];
+---
+
+<section id="soluciones" aria-labelledby="soluciones-title" class="bg-soft py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <h2 id="soluciones-title" class="text-3xl font-bold tracking-[-0.035em] text-slate-900 sm:text-[2.75rem] sm:leading-[1.08]">
+        Soluciones para cada rubro
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-slate-500">
+        Cada negocio despacha distinto. repa se adapta al tamaño del pedido, a la distancia y a cuántas veces por día
+        necesitás un repartidor.
+      </p>
+    </div>
+
+    <ul class="reveal-group mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        verticals.map(({ Icon, title, text, example }) => (
+          <li>
+            <article class="lift flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-card backdrop-blur">
+              <span class="lift-icon flex size-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                <Icon className="size-[1.375rem]" strokeWidth={2} aria-hidden="true" />
+              </span>
+              <h3 class="mt-5 text-lg font-semibold tracking-tight text-slate-900">{title}</h3>
+              <p class="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-slate-500">{text}</p>
+              <p class="mt-5 rounded-lg bg-slate-50 px-3 py-2 text-xs leading-snug font-medium text-slate-600 tabular-nums">
+                <span class="sr-only">Pedido de ejemplo: </span>
+                {example}
+              </p>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

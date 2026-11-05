@@ -1,0 +1,52 @@
+---
+const steps = [
+  {
+    title: 'Sumá tu comercio',
+    text: 'Cargás los datos del local y la dirección de retiro, y ya podés empezar a pedir envíos.',
+  },
+  {
+    title: 'Pedí el envío',
+    text: 'Ingresás la dirección del cliente, ves el costo por kilómetro y confirmás. Un repartidor verificado lo toma.',
+  },
+  {
+    title: 'Seguilo hasta la puerta',
+    text: 'Ves el pedido en camino y, al entregarlo, te queda la foto, quién lo recibió y la hora.',
+  },
+];
+---
+
+<section id="como-funciona" aria-labelledby="como-funciona-title" class="bg-fade py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <h2 id="como-funciona-title" class="text-3xl font-bold tracking-[-0.035em] text-slate-900 sm:text-[2.75rem] sm:leading-[1.08]">
+        Cómo funciona
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-slate-500">Tres pasos entre el pedido y la entrega.</p>
+    </div>
+
+    <div class="relative mt-14">
+      <!-- Línea que une los pasos en desktop: se dibuja al hacer scroll -->
+      <span aria-hidden="true" class="absolute top-5 right-[16%] left-[16%] hidden h-0.5 overflow-hidden rounded-full bg-slate-200 md:block">
+        <span class="draw-x block h-full w-full bg-linear-to-r from-brand-600 via-brand-600 to-success"></span>
+      </span>
+      <ol class="reveal-group relative grid gap-10 md:grid-cols-3 md:gap-8">
+        {
+          steps.map((step, i) => (
+            <li class="group relative flex gap-5 md:flex-col md:items-center md:text-center">
+              <span class:list={[
+                'relative flex size-10 shrink-0 items-center justify-center rounded-full text-[0.9375rem] font-bold text-white tabular-nums ring-8 ring-[#f8fafd] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110',
+                i === steps.length - 1 ? 'bg-success' : 'bg-brand-600',
+              ]}>
+                {i + 1}
+              </span>
+              <div class="md:mt-6">
+                <h3 class="text-xl font-semibold tracking-tight text-slate-900">{step.title}</h3>
+                <p class="mt-2 max-w-xs text-[0.9375rem] leading-relaxed text-slate-500 md:mx-auto">{step.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

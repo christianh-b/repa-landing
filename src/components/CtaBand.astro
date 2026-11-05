@@ -1,0 +1,35 @@
+---
+import { site } from '../data/site';
+---
+
+<section aria-labelledby="cta-title" class="bg-cta relative isolate overflow-hidden">
+  <div aria-hidden="true" class="bg-dots absolute inset-0 -z-10"></div>
+  <div aria-hidden="true" class="cta-sheen absolute -inset-y-20 -left-1/4 -z-10 w-1/2 rotate-12 bg-linear-to-r from-transparent via-white/10 to-transparent"></div>
+
+  <div class="reveal mx-auto flex max-w-6xl flex-col items-start gap-8 px-5 py-20 sm:px-8 sm:py-24 lg:flex-row lg:items-center lg:justify-between">
+    <div class="max-w-2xl">
+      <h2 id="cta-title" class="text-3xl font-bold tracking-[-0.035em] text-white sm:text-5xl sm:leading-[1.05]">
+        Tu próximo pedido puede salir hoy
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-brand-50">
+        Sumá tu comercio en {site.area.label} o empezá a repartir con repa PRO.
+      </p>
+    </div>
+    <div class="flex w-full shrink-0 flex-col gap-3 whitespace-nowrap sm:w-auto sm:flex-row">
+      <a
+        href={site.links.merchantSignup}
+        aria-label="Sumar mi comercio a repa"
+        class="inline-flex h-13 items-center justify-center rounded-full bg-white px-7 font-semibold text-brand-700 shadow-[0_12px_30px_-12px_rgb(0_0_0/0.45)] transition-[background-color,transform] duration-300 hover:-translate-y-0.5 hover:bg-brand-50 active:translate-y-0 active:scale-[0.98]"
+      >
+        Sumar mi comercio
+      </a>
+      <a
+        href={site.links.driverSignup}
+        aria-label="Quiero ser repartidor de repa"
+        class="inline-flex h-13 items-center justify-center rounded-full border border-white/40 bg-white/5 px-7 font-semibold text-white backdrop-blur transition-[background-color,transform] duration-300 hover:-translate-y-0.5 hover:bg-white/15 active:translate-y-0 active:scale-[0.98]"
+      >
+        Quiero ser repartidor
+      </a>
+    </div>
+  </div>
+</section>

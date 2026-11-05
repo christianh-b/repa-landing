@@ -1,0 +1,43 @@
+---
+import { faqs } from '../data/site';
+---
+
+<section id="faq" aria-labelledby="faq-title" class="faq bg-soft py-20 sm:py-28">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+    <div class="reveal">
+      <h2 id="faq-title" class="text-3xl font-bold tracking-[-0.035em] text-slate-900 sm:text-[2.75rem] sm:leading-[1.08]">
+        Preguntas frecuentes
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-slate-500">
+        Costos, cobertura, cómo se integra y qué necesitás para repartir.
+      </p>
+    </div>
+
+    <div class="reveal divide-y divide-slate-200 rounded-2xl border border-slate-200/80 bg-white/90 shadow-card backdrop-blur">
+      {
+        faqs.map((f, i) => (
+          <details class="group" open={i === 0}>
+            <summary
+              class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-6 px-5 py-4 text-left font-semibold text-slate-900 transition-colors hover:text-brand-700 sm:px-6"
+              aria-label={`Pregunta: ${f.q}`}
+            >
+              <h3 class="text-base sm:text-[1.0625rem]">{f.q}</h3>
+              <svg
+                viewBox="0 0 24 24"
+                class="size-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:rotate-45"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="M12 5v14M5 12h14" />
+              </svg>
+            </summary>
+            <p class="max-w-[62ch] px-5 pb-5 text-[0.9375rem] leading-relaxed text-slate-500 sm:px-6">{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

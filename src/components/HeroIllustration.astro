@@ -1,0 +1,311 @@
+---
+// Ilustración del hero: repartidor de repa en scooter, del comercio a la casa del cliente.
+// SVG propio (sin imágenes externas), animado solo con CSS. Se apaga con prefers-reduced-motion.
+const windows = [
+  [162, 226], [186, 226], [162, 252], [186, 252], [162, 278], [186, 278],
+  [234, 180], [262, 180], [234, 208], [262, 208], [234, 236], [262, 236], [234, 264], [262, 264],
+  [374, 210], [400, 210], [374, 238], [400, 238], [374, 266], [400, 266],
+];
+---
+
+<svg class="hero-illo" viewBox="10 66 590 362" role="img" aria-labelledby="illo-title" xmlns="http://www.w3.org/2000/svg">
+  <title id="illo-title">Ilustración: un repartidor de repa en scooter lleva un pedido desde un kiosco hasta la casa del cliente.</title>
+  <defs>
+    <radialGradient id="illo-halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#dbe7ff" />
+      <stop offset="0.6" stop-color="#eef4ff" stop-opacity="0.7" />
+      <stop offset="1" stop-color="#eef4ff" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="illo-beam" x1="0" x2="1">
+      <stop offset="0" stop-color="#fde68a" stop-opacity="0.9" />
+      <stop offset="1" stop-color="#fde68a" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="illo-box" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f74ff" />
+      <stop offset="1" stop-color="#0047d6" />
+    </linearGradient>
+    <linearGradient id="illo-helmet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3d7bff" />
+      <stop offset="1" stop-color="#0047d6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo: halo y ciudad -->
+  <circle cx="320" cy="250" r="230" fill="url(#illo-halo)" />
+  <g class="city">
+    <rect x="150" y="210" width="60" height="170" rx="8" fill="#dce6ff" />
+    <rect x="222" y="164" width="70" height="216" rx="8" fill="#cbd9ff" />
+    <rect x="300" y="236" width="52" height="144" rx="8" fill="#dce6ff" />
+    <rect x="362" y="196" width="66" height="184" rx="8" fill="#cbd9ff" />
+    {windows.map(([x, y]) => <rect x={x} y={y} width="14" height="14" rx="3" fill="#ffffff" fill-opacity="0.75" />)}
+  </g>
+
+  <!-- Nubes -->
+  <g class="cloud cloud-a" fill="#ffffff">
+    <ellipse cx="120" cy="120" rx="34" ry="14" />
+    <ellipse cx="142" cy="110" rx="22" ry="16" />
+  </g>
+  <g class="cloud cloud-b" fill="#ffffff">
+    <ellipse cx="470" cy="96" rx="30" ry="12" />
+    <ellipse cx="452" cy="88" rx="18" ry="13" />
+  </g>
+
+  <!-- Ruta del comercio a la casa -->
+  <path class="route" d="M92 238 C 190 92, 420 70, 522 196" fill="none" stroke="#0055ff" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 12" />
+  <circle cx="92" cy="238" r="7" fill="#0055ff" />
+  <circle cx="92" cy="238" r="3" fill="#ffffff" />
+
+  <!-- Comercio (kiosco) -->
+  <g>
+    <rect x="34" y="282" width="114" height="98" rx="8" fill="#ffffff" stroke="#dbe3ee" stroke-width="2" />
+    <rect x="46" y="306" width="42" height="34" rx="5" fill="#eef4ff" />
+    <rect x="100" y="320" width="34" height="60" rx="5" fill="#dbe7ff" />
+    <circle cx="127" cy="352" r="2.5" fill="#0055ff" />
+    <g>
+      <rect x="28" y="262" width="31" height="24" fill="#0055ff" />
+      <rect x="59" y="262" width="31" height="24" fill="#ffffff" />
+      <rect x="90" y="262" width="31" height="24" fill="#0055ff" />
+      <rect x="121" y="262" width="31" height="24" fill="#ffffff" />
+      <rect x="28" y="262" width="124" height="24" rx="4" fill="none" stroke="#0039ab" stroke-width="2" />
+    </g>
+    <rect x="52" y="240" width="76" height="20" rx="10" fill="#0f172a" />
+    <text x="90" y="254" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#ffffff">KIOSCO</text>
+  </g>
+
+  <!-- Casa del cliente -->
+  <g>
+    <rect x="474" y="296" width="100" height="84" rx="8" fill="#ffffff" stroke="#dbe3ee" stroke-width="2" />
+    <path d="M462 302 L524 250 L586 302 Z" fill="#0f172a" />
+    <rect x="510" y="328" width="28" height="52" rx="4" fill="#0055ff" />
+    <circle cx="532" cy="356" r="2.5" fill="#ffffff" />
+    <rect x="484" y="314" width="18" height="18" rx="3" fill="#eef4ff" />
+    <rect x="548" y="314" width="18" height="18" rx="3" fill="#eef4ff" />
+  </g>
+
+  <!-- Pin de destino -->
+  <g class="pin">
+    <path d="M524 214 C 508 196, 504 186, 504 176 A20 20 0 0 1 544 176 C 544 186, 540 196, 524 214 Z" fill="#10b981" />
+    <path d="M515 176 l6 6 11-12" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <ellipse class="pin-shadow" cx="524" cy="226" rx="10" ry="3" fill="#0f172a" fill-opacity="0.15" />
+
+  <!-- Paquetes flotando -->
+  <g class="pkg pkg-a">
+    <rect x="174" y="132" width="30" height="26" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+    <path d="M189 132 v26 M174 142 h30" stroke="#0055ff" stroke-width="2.5" />
+  </g>
+  <g class="pkg pkg-b">
+    <rect x="404" y="120" width="24" height="21" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+    <path d="M416 120 v21" stroke="#10b981" stroke-width="2.5" />
+  </g>
+
+  <!-- Calle -->
+  <rect x="0" y="378" width="600" height="7" rx="3.5" fill="#e2e8f0" />
+  <line class="lane" x1="0" y1="414" x2="600" y2="414" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round" stroke-dasharray="30 24" />
+
+  <!-- Líneas de velocidad -->
+  <g stroke="#94a3b8" stroke-width="4" stroke-linecap="round">
+    <line class="speed speed-1" x1="96" y1="262" x2="140" y2="262" />
+    <line class="speed speed-2" x1="76" y1="292" x2="132" y2="292" />
+    <line class="speed speed-3" x1="104" y1="326" x2="146" y2="326" />
+  </g>
+
+  <ellipse class="rider-shadow" cx="312" cy="383" rx="132" ry="7" fill="#0f172a" fill-opacity="0.12" />
+
+  <!-- Repartidor + scooter -->
+  <g class="rider">
+    <!-- Haz del farol -->
+    <path class="beam" d="M420 258 L500 236 L500 290 Z" fill="url(#illo-beam)" />
+
+    <!-- Ruedas -->
+    {
+      [230, 402].map((cx) => (
+        <g>
+          <circle cx={cx} cy="352" r="27" fill="#0f172a" />
+          <circle cx={cx} cy="352" r="15" fill="#e2e8f0" />
+          <g class="spin">
+            <path d={`M${cx - 15} 352 H${cx + 15} M${cx} 337 V367`} stroke="#94a3b8" stroke-width="3" />
+            <circle cx={cx} cy="352" r="15" fill="none" />
+          </g>
+          <circle cx={cx} cy="352" r="5" fill="#0f172a" />
+        </g>
+      ))
+    }
+
+    <!-- Caja de reparto -->
+    <path d="M178 302 H252" stroke="#334155" stroke-width="6" stroke-linecap="round" />
+    <rect x="156" y="210" width="98" height="90" rx="14" fill="url(#illo-box)" />
+    <rect x="156" y="232" width="98" height="6" fill="#0039ab" fill-opacity="0.55" />
+    <rect x="165" y="246" width="6" height="42" rx="3" fill="#ffffff" fill-opacity="0.28" />
+    <text x="203" y="276" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-1" fill="#ffffff">repa</text>
+    <circle cx="236" cy="258" r="7" fill="#ffffff" />
+    <path d="M232.5 258.2 l2.4 2.4 4.4-4.6" fill="none" stroke="#0055ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Carrocería -->
+    <path d="M188 352 C 184 318, 206 300, 240 300 L 320 304 C 332 306, 336 318, 332 332 L 328 352 Z" fill="#1e293b" />
+    <path d="M206 332 C 226 320, 282 318, 318 322" fill="none" stroke="#0055ff" stroke-width="5" stroke-linecap="round" />
+    <rect x="306" y="336" width="80" height="14" rx="7" fill="#334155" />
+    <path d="M368 352 L 390 352 L 416 254 L 400 248 Z" fill="#1e293b" />
+    <path d="M374 346 A 30 30 0 0 1 430 346" fill="none" stroke="#1e293b" stroke-width="9" stroke-linecap="round" />
+    <rect x="236" y="290" width="80" height="14" rx="7" fill="#0f172a" />
+    <path d="M394 246 L 426 238" stroke="#0f172a" stroke-width="8" stroke-linecap="round" />
+    <path d="M410 244 L 404 226" stroke="#0f172a" stroke-width="4" stroke-linecap="round" />
+    <circle cx="403" cy="222" r="6" fill="#94a3b8" />
+    <circle cx="416" cy="262" r="7.5" fill="#fde68a" />
+
+    <!-- Piernas -->
+    <path d="M270 298 L 332 300" stroke="#334155" stroke-width="26" stroke-linecap="round" />
+    <path d="M332 300 L 346 334" stroke="#334155" stroke-width="22" stroke-linecap="round" />
+    <ellipse cx="356" cy="339" rx="17" ry="8" fill="#0f172a" />
+
+    <!-- Torso (campera blanca) -->
+    <path d="M252 302 C 244 262, 256 226, 284 214 L 308 212 C 326 230, 328 272, 318 302 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+    <path d="M298 216 C 308 240, 314 270, 312 300" fill="none" stroke="#0055ff" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Brazo -->
+    <path d="M300 228 L 344 252 L 392 244" fill="none" stroke="#cbd5e1" stroke-width="23" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M300 228 L 344 252 L 392 244" fill="none" stroke="#ffffff" stroke-width="19" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M382 245.5 L 390 244.2" stroke="#0055ff" stroke-width="19" />
+    <circle cx="398" cy="243" r="9" fill="#f5c6a5" />
+
+    <!-- Cabeza y casco -->
+    <rect x="286" y="194" width="16" height="22" rx="6" fill="#f5c6a5" />
+    <circle cx="300" cy="184" r="24" fill="#f5c6a5" />
+    <path d="M308 199 Q 314 203 320 198" fill="none" stroke="#9a5b3b" stroke-width="2.2" stroke-linecap="round" />
+    <path d="M272 190 A 28 28 0 0 1 328 184 L 328 190 L 272 194 Z" fill="url(#illo-helmet)" />
+    <path d="M308 172 L 332 177 L 330 191 L 308 189 Z" fill="#0f172a" fill-opacity="0.88" />
+    <path d="M282 170 A 20 20 0 0 1 300 160" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>
+
+<style>
+  .hero-illo {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    animation: illo-in 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .hero-illo * {
+    transform-box: fill-box;
+  }
+  .rider {
+    animation: bob 0.7s ease-in-out infinite alternate;
+  }
+  .rider-shadow {
+    transform-origin: center;
+    animation: shadow 0.7s ease-in-out infinite alternate;
+  }
+  .spin {
+    transform-origin: center;
+    animation: spin 0.55s linear infinite;
+  }
+  .lane {
+    animation: lane 0.9s linear infinite;
+  }
+  .route {
+    animation: route 1.2s linear infinite;
+  }
+  .speed {
+    animation: speed 1s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+  .speed-2 {
+    animation-delay: 0.25s;
+  }
+  .speed-3 {
+    animation-delay: 0.5s;
+  }
+  .pin {
+    animation: pin 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  .pin-shadow {
+    transform-origin: center;
+    animation: pin-shadow 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  .cloud-a {
+    animation: drift 14s ease-in-out infinite alternate;
+  }
+  .cloud-b {
+    animation: drift 18s ease-in-out infinite alternate-reverse;
+  }
+  .pkg-a {
+    animation: float 4s ease-in-out infinite alternate;
+  }
+  .pkg-b {
+    animation: float 5s ease-in-out 0.8s infinite alternate;
+  }
+  .beam {
+    animation: beam 2.4s ease-in-out infinite alternate;
+  }
+
+  @keyframes illo-in {
+    from {
+      transform: translateY(18px) scale(0.97);
+      filter: blur(6px);
+    }
+  }
+  @keyframes bob {
+    to {
+      transform: translateY(-3px);
+    }
+  }
+  @keyframes shadow {
+    to {
+      transform: scaleX(0.94);
+    }
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes lane {
+    to {
+      stroke-dashoffset: 54;
+    }
+  }
+  @keyframes route {
+    to {
+      stroke-dashoffset: -26;
+    }
+  }
+  @keyframes speed {
+    0% {
+      transform: translateX(16px);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-26px);
+      opacity: 0;
+    }
+  }
+  @keyframes pin {
+    50% {
+      transform: translateY(-9px);
+    }
+  }
+  @keyframes pin-shadow {
+    50% {
+      transform: scale(0.7);
+      opacity: 0.5;
+    }
+  }
+  @keyframes drift {
+    to {
+      transform: translateX(28px);
+    }
+  }
+  @keyframes float {
+    to {
+      transform: translateY(-10px) rotate(-6deg);
+    }
+  }
+  @keyframes beam {
+    to {
+      opacity: 0.55;
+    }
+  }
+</style>

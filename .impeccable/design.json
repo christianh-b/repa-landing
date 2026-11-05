@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T23:54:41.267Z",
+  "title": "Design System: repa",
+  "extensions": {
+    "colorMeta": {
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Azul señal",
+        "canonical": "#0055FF",
+        "tonalRamp": [
+          "#001E5C",
+          "#002C85",
+          "#0039AB",
+          "#0047D6",
+          "#0055FF",
+          "#5C8FFF",
+          "#B8CFFF",
+          "#EEF4FF"
+        ]
+      },
+      "delivered-green": {
+        "role": "secondary",
+        "displayName": "Verde entregado",
+        "canonical": "#10B981",
+        "tonalRamp": [
+          "#022C22",
+          "#064E3B",
+          "#065F46",
+          "#047857",
+          "#10B981",
+          "#6EE7B7",
+          "#A7F3D0",
+          "#ECFDF5"
+        ]
+      },
+      "route-ink": {
+        "role": "neutral",
+        "displayName": "Tinta de ruta",
+        "canonical": "#0F172A",
+        "tonalRamp": [
+          "#020617",
+          "#0F172A",
+          "#1E293B",
+          "#334155",
+          "#475569",
+          "#64748B",
+          "#CBD5E1",
+          "#F8FAFC"
+        ]
+      },
+      "slate-text": {
+        "role": "neutral",
+        "displayName": "Pizarra",
+        "canonical": "#64748B"
+      },
+      "ice": {
+        "role": "neutral",
+        "displayName": "Hielo",
+        "canonical": "#F8FAFC"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papel",
+        "canonical": "#FFFFFF"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Único h1 del hero."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "h2 de cada sección."
+      },
+      "figure": {
+        "displayName": "Cifra",
+        "purpose": "Montos, distancias y tiempos, siempre tabulares."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card",
+        "value": "0 1px 2px rgb(15 23 42 / 0.04), 0 4px 12px -2px rgb(15 23 42 / 0.06)",
+        "purpose": "Tarjetas, controles elevados, pestaña activa."
+      },
+      {
+        "name": "float",
+        "value": "0 2px 4px rgb(15 23 42 / 0.04), 0 18px 40px -12px rgb(15 23 42 / 0.18)",
+        "purpose": "Pantallas de la app en el hero y popovers."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Crecimiento de la barra de hoy y latido de la parada en curso."
+      },
+      {
+        "name": "state",
+        "value": "200ms",
+        "purpose": "Hover y cambios de estado de botones y pestañas."
+      },
+      {
+        "name": "reveal",
+        "value": "animation-timeline: view(); 40px + opacity + blur(6px)",
+        "purpose": "Aparición de secciones y tarjetas al hacer scroll."
+      },
+      {
+        "name": "marquee",
+        "value": "38s linear infinite",
+        "purpose": "Cinta de rubros debajo del hero."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal: Sumar mi comercio.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Sumar mi comercio</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 28px;border-radius:9999px;background:#0055FF;color:#fff;font-family:Geist,system-ui,sans-serif;font-weight:600;font-size:16px;text-decoration:none;box-shadow:0 1px 2px rgb(15 23 42/.04),0 4px 12px -2px rgb(15 23 42/.06);transition:background-color .2s,transform .2s}.ds-btn-primary:hover{background:#0047D6}.ds-btn-primary:active{transform:scale(.98)}.ds-btn-primary:focus-visible{outline:2px solid #0055FF;outline-offset:3px}"
+    },
+    {
+      "name": "Botón secundario",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Acción alternativa: Quiero ser repartidor.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Quiero ser repartidor</a>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 28px;border-radius:9999px;background:#fff;color:#0F172A;border:1px solid #CBD5E1;font-family:Geist,system-ui,sans-serif;font-weight:600;font-size:16px;text-decoration:none;transition:background-color .2s,border-color .2s}.ds-btn-secondary:hover{background:#F8FAFC;border-color:#94A3B8}.ds-btn-secondary:focus-visible{outline:2px solid #0055FF;outline-offset:3px}"
+    },
+    {
+      "name": "Chips de estado",
+      "kind": "chip",
+      "refersTo": "chip-in-progress",
+      "description": "Estado de una entrega.",
+      "html": "<span class=\"ds-chip ds-chip-live\"><i></i>En curso</span> <span class=\"ds-chip ds-chip-done\">Entregado</span> <span class=\"ds-chip ds-chip-todo\">Pendiente</span>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:9999px;font:600 11px/16px Geist,system-ui,sans-serif}.ds-chip i{width:6px;height:6px;border-radius:50%;background:#0055FF}.ds-chip-live{background:#EEF4FF;color:#0047D6}.ds-chip-done{background:#ECFDF5;color:#047857}.ds-chip-todo{background:#F1F5F9;color:#475569}"
+    },
+    {
+      "name": "Tarjeta",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Contenedor de rubros y paneles.",
+      "html": "<article class=\"ds-card\"><h3>Farmacias y perfumerías</h3><p>Entregas con prueba de recepción.</p></article>",
+      "css": ".ds-card{background:#fff;border:1px solid rgb(226 232 240/.8);border-radius:16px;padding:24px;box-shadow:0 1px 2px rgb(15 23 42/.04),0 4px 12px -2px rgb(15 23 42/.06);font-family:Geist,system-ui,sans-serif;transition:border-color .3s,transform .3s}.ds-card:hover{border-color:#CBD5E1;transform:translateY(-2px)}.ds-card h3{margin:0;font-size:18px;font-weight:600;letter-spacing:-.025em;color:#0F172A}.ds-card p{margin:8px 0 0;font-size:15px;line-height:1.6;color:#64748B}"
+    },
+    {
+      "name": "Parada de ruta",
+      "kind": "custom",
+      "description": "Fila de la app repa PRO con la parada en curso.",
+      "html": "<div class=\"ds-stop\"><span class=\"ds-stop-n\">2</span><span class=\"ds-stop-t\"><b>Guido Spano 1966</b><small>Llegada 09:55 · 2,1 km</small></span><span class=\"ds-stop-c\">En curso</span></div>",
+      "css": ".ds-stop{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid #0055FF;box-shadow:0 0 0 1px #0055FF;border-radius:16px;background:#fff;font-family:Geist,system-ui,sans-serif;max-width:340px}.ds-stop-n{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#0055FF;color:#fff;font-weight:700;font-size:14px}.ds-stop-t{flex:1;display:flex;flex-direction:column}.ds-stop-t b{font-size:14px;color:#0F172A}.ds-stop-t small{font-size:12px;color:#64748B;font-variant-numeric:tabular-nums}.ds-stop-c{padding:2px 8px;border-radius:9999px;background:#EEF4FF;color:#0047D6;font-size:11px;font-weight:600}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El pedido a la vista",
+    "overview": "repa se diseña como el recorrido de un pedido: del comercio a la puerta del cliente. El hero lo cuenta con una ilustración vectorial propia: un repartidor en scooter con la caja azul de repa, una ruta punteada que une un kiosco con una casa y un pin verde de entrega. Todo vive sobre fondos claros que nunca son blanco plano: lavados de cielo con auroras azules y verdes que se mueven lento.",
+    "keyCharacteristics": [
+      "Un solo acento cromático (azul señal) para acción, movimiento y la marca; verde solo para \"entregado\".",
+      "Fondos en degradé suave (cielo → niebla) con auroras radiales; nunca blanco sólido de punta a punta.",
+      "Ilustración vectorial plana, sin contornos, con la paleta de la marca.",
+      "Números en negrita, tracking apretado y cifras tabulares.",
+      "Movimiento con ease-out exponencial, solo con transform, opacidad y filtros, y apagado con reduced-motion."
+    ],
+    "rules": [
+      {
+        "name": "La regla de la señal",
+        "body": "El azul marca acción o movimiento, nunca decoración. Si algo azul no se puede tocar ni está \"en curso\", va en neutro.",
+        "section": "colors"
+      },
+      {
+        "name": "La regla del verde ganado",
+        "body": "El verde aparece solo cuando una entrega terminó. No se usa para \"éxito\" genérico ni para marketing.",
+        "section": "colors"
+      },
+      {
+        "name": "La regla del número de app",
+        "body": "Toda cifra (km, min, ARS) usa cifras tabulares; las cifras protagonistas van en 700 con tracking apretado.",
+        "section": "typography"
+      },
+      {
+        "name": "La regla del cielo",
+        "body": "Ninguna sección es blanco plano: cada una lleva un degradado de niebla a cielo o una aurora radial del azul de marca (≤ 22 % de opacidad) o del verde (≤ 25 %).",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do contar el envío con la ilustración propia (repartidor, comercio, ruta, destino) en el estilo vectorial plano de la marca.",
+      "Do animar solo transform, opacidad y filtros, y respetar prefers-reduced-motion.",
+      "Do rotular como \"Datos de ejemplo\" cualquier vista del producto con datos inventados.",
+      "Do reservar el azul señal (#0055FF) para acción y estado en curso, y el verde (#10B981) para entregado.",
+      "Do usar cifras tabulares en todo número de distancia, tiempo o dinero.",
+      "Do usar pizarra fuerte, no pizarra, para texto chico sobre lavados de color."
+    ],
+    "donts": [
+      "Don't usar fotos de stock ni ilustraciones de terceros con otro estilo o paleta.",
+      "Don't usar fondos de grilla de líneas ni blanco sólido de punta a punta.",
+      "Don't ocultar el título del hero en su animación de entrada (opacidad 0 retrasa el LCP).",
+      "Don't poner etiquetas o \"eyebrows\" arriba de los títulos.",
+      "Don't inventar precios, clientes o métricas: van marcadores entre corchetes hasta tener el dato.",
+      "Don't agregar un segundo color de acento."
+    ]
+  }
+}

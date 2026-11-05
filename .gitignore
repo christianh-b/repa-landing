@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+.DS_Store
+
+# Archivos de trabajo de Impeccable (PRODUCT.md, DESIGN.md, .impeccable/design.json y .impeccable/surfaces/ sí van al repo)
+.impeccable/review/
+.impeccable/questions/
+.impeccable/mocks/
+.impeccable/config.local.json

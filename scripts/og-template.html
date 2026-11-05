@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- Plantilla de la imagen para compartir (public/og.png). Regenerala con: npm run build && npm run og
+     El marcador ILLUSTRATION se reemplaza por la ilustración del hero tomada de dist/index.html. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: Geist; src: url('../node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2'); font-weight: 100 900; }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden; font-family: Geist, sans-serif; color: #0F172A;
+    background:
+      radial-gradient(700px 420px at 100% 0%, rgba(0,85,255,.18), transparent 60%),
+      radial-gradient(500px 360px at 0% 100%, rgba(16,185,129,.14), transparent 60%),
+      linear-gradient(180deg, #f3f7ff, #fbfcfe);
+  }
+  .wrap { display: grid; grid-template-columns: 500px 1fr; height: 100%; padding: 64px 40px 64px 72px; gap: 8px; align-items: center; }
+  .logo { display: flex; align-items: center; gap: 10px; font-size: 38px; font-weight: 700; letter-spacing: -0.04em; }
+  .pro { display: inline-flex; align-items: center; gap: 6px; background: #0055FF; color: #fff; font-size: 17px; letter-spacing: 0.04em; padding: 5px 10px 5px 13px; border-radius: 999px; font-weight: 600; }
+  h1 { margin-top: 40px; font-size: 66px; line-height: 1.03; letter-spacing: -0.045em; font-weight: 700; }
+  h1 span { color: #0055FF; }
+  p { margin-top: 24px; font-size: 24px; line-height: 1.4; color: #475569; }
+  .art svg { width: 100%; height: auto; display: block; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div>
+      <div class="logo">repa <span class="pro">PRO <svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#fff"/><path d="M5 8.3l2 2 4-4.3" fill="none" stroke="#0055FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+      <h1>Envíos <span>rápidos</span> para tu comercio</h1>
+      <p>Restaurantes, kioscos, farmacias y distribuidoras · Cañuelas y alrededores</p>
+    </div>
+    <div class="art"><!--ILLUSTRATION--></div>
+  </div>
+</body>
+</html>
