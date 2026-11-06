@@ -1,153 +1,92 @@
-# repa · landing page
+# repa · landing en HTML, CSS y JS puro
 
-Astro 5 + React (islas) + Tailwind CSS 4. Todo es HTML y CSS estático, salvo dos islas de React que se hidratan con `client:visible`: las pestañas de beneficios y la calculadora de envíos.
+La misma landing que `../repa-landing` (Astro), sin frameworks, sin dependencias y sin paso de compilación. Se ve y funciona igual: ilustración animada, fondos degradados, animaciones al hacer scroll, pestañas de beneficios, calculadora de envíos, preguntas frecuentes y SEO completo.
 
-## Cómo levantar el proyecto
+## Cómo abrirla
 
-### 1. Requisitos
+**Opción 1, la más simple:** doble clic en `index.html`. Se abre en el navegador y funciona todo.
 
-- **Node.js 20 o más nuevo** (Astro 5 pide 18.20.8, 20.3 o 22+). Para ver tu versión:
-
-  ```bash
-  node -v
-  ```
-
-  Si no lo tenés, instalalo desde [nodejs.org](https://nodejs.org) (versión LTS) o con Homebrew:
-
-  ```bash
-  brew install node
-  ```
-
-- **npm**, que viene con Node.
-- **Google Chrome**: solo si vas a regenerar la imagen para compartir (paso 6).
-
-### 2. Entrar a la carpeta
+**Opción 2, con un servidor local** (recomendado para probar como va a quedar publicado). Desde esta carpeta, con cualquiera de estos:
 
 ```bash
-cd ~/Desktop/repa-landing
+python3 -m http.server 8080
 ```
-
-### 3. Instalar las dependencias
 
 ```bash
-npm install
+npx serve .
 ```
 
-Crea la carpeta `node_modules/`. Solo hace falta la primera vez y cada vez que cambie `package.json`.
+y abrí [http://localhost:8080](http://localhost:8080) (o la dirección que muestre `serve`). Para cortarlo, `Ctrl + C`.
 
-Si npm muestra un aviso de `install-scripts` para `esbuild` o `sharp`, podés ignorarlo: el proyecto compila igual.
-
-### 4. Levantar el servidor de desarrollo
+Para verla en el celular, conectado al mismo Wi-Fi, abrí `http://<IP de tu compu>:8080`. La IP la ves en Ajustes del sistema → Red, o con:
 
 ```bash
-npm run dev
+ipconfig getifaddr en0
 ```
-
-Abrí [http://localhost:4321](http://localhost:4321). Cada vez que guardás un archivo, la página se actualiza sola. Para cortar el servidor, apretá `Ctrl + C` en la terminal.
-
-En este modo también se ve la sección reservada de testimonios (`Proof.astro`), que no sale en la versión final hasta que la completes.
-
-Para probarlo en tu celular, conectado a la misma red Wi-Fi:
-
-```bash
-npm run dev -- --host
-```
-
-y abrí en el celular la dirección `Network` que aparece en la terminal (por ejemplo `http://192.168.0.10:4321`).
-
-### 5. Compilar la versión final y probarla
-
-```bash
-npm run build
-```
-
-Genera el sitio estático en `dist/`: es lo que se sube al hosting.
-
-```bash
-npm run preview
-```
-
-Sirve esa carpeta `dist/` en [http://localhost:4321](http://localhost:4321) para revisarla tal como va a quedar publicada.
-
-### 6. (Opcional) Regenerar la imagen para compartir
-
-Si cambiás la ilustración o los textos de `scripts/og-template.html`:
-
-```bash
-npm run build && npm run og
-```
-
-Actualiza `public/og.png` (1200×630, la que se ve al compartir el link por WhatsApp o redes) y `public/apple-touch-icon.png`. Usa Google Chrome en modo headless; en otra ruta o en Linux, indicala así:
-
-```bash
-CHROME=/ruta/a/chrome npm run og
-```
-
-### 7. Publicar
-
-La carpeta `dist/` es HTML, CSS y JS estático: sirve en Netlify, Vercel, Cloudflare Pages, GitHub Pages o cualquier hosting.
-
-- Comando de build: `npm run build`
-- Carpeta a publicar: `dist`
-- Variable de entorno `SITE_URL` con tu dominio (por ejemplo `https://repa.com.ar`), para que el canonical, el sitemap y la imagen para compartir usen las URLs correctas. Actualizá también la línea `Sitemap:` de `public/robots.txt`.
-
-Activá la compresión (gzip o brotli) en el hosting: la mayoría la trae prendida. Sin compresión, el HTML pesa unos 125 KB en vez de 26 KB y baja el puntaje de rendimiento en celular.
-
-### Problemas comunes
-
-| Síntoma | Solución |
-|---|---|
-| `command not found: npm` | Falta Node.js (paso 1). |
-| `Astro requires Node.js v18.20.8 or higher` | Actualizá Node a la versión LTS. |
-| `Port 4321 is in use` | Ya hay otro servidor corriendo. Cerralo con `Ctrl + C` o usá otro puerto: `npm run dev -- --port 4322`. |
-| La página no muestra los cambios en `npm run preview` | `preview` sirve la última compilación: volvé a correr `npm run build`. |
-| Errores raros después de actualizar dependencias | Borrá `node_modules` y `package-lock.json`, y corré `npm install` de nuevo. |
-
-## Antes de publicar: marcadores para reemplazar
-
-Todo lo que está entre `[CORCHETES]` es un dato que no existía todavía y no se inventó.
-
-| Dónde | Qué |
-|---|---|
-| `astro.config.mjs` y `public/robots.txt` | `SITE_URL`: el dominio real (canonical, Open Graph y sitemap salen de acá). También se puede pasar como variable de entorno. |
-| `src/data/site.ts` → `links` | URLs de inicio de sesión, alta de comercios, alta de repartidores y app repa PRO (hoy apuntan a `#`). |
-| `src/data/site.ts` → `contact`, `social` | Email, WhatsApp y redes. |
-| `src/data/site.ts` → `pricing` | Tarifa mínima y precio por km reales. Cuando estén, poné `isExample: false` y la calculadora deja de mostrar el aviso. |
-| `src/data/site.ts` → `faqs` | `[TARIFA MÍNIMA]`, `[PRECIO POR KM]`, integraciones, requisitos para repartidores y frecuencia de pago. |
-| `src/components/BenefitsTabs.tsx` | `[FRECUENCIA DE PAGO]` y `[PRECIO]` en la vista previa del pedido. |
-| `src/components/Proof.astro` | Testimonios reales; después poné `ready = true`. Mientras tanto la sección solo se ve en `npm run dev`. |
-| `src/pages/terminos.astro`, `privacidad.astro` | Textos legales (privacidad según la Ley 25.326). |
-
-Revisá también que estas afirmaciones sean ciertas para repa: "sin comisiones sobre el valor de tu venta" y "flota verificada (identidad, vehículo y documentación revisados)".
 
 ## Estructura
 
 ```
-src/
-  layouts/Layout.astro        SEO: title, description, canonical, Open Graph, Twitter, JSON-LD
-  lib/schema.ts               Schema.org en un @graph: Organization, WebSite, Service, SoftwareApplication, FAQPage
-  data/site.ts                Datos del sitio, tarifas y preguntas frecuentes (una sola fuente)
-  components/
-    Navbar.astro              Header fijo con menú mobile sin JS (<details>)
-    Hero.astro                h1 + CTAs + mockup de repa PRO en HTML
-    Verticals.astro           Soluciones para cada rubro
-    Benefits.astro            Sección de beneficios (contiene la isla)
-    BenefitsTabs.tsx          Isla: pestañas comercios / repartidores (patrón WAI-ARIA)
-    HowItWorks.astro          3 pasos
-    Quote.astro               Sección de la calculadora (contiene la isla)
-    QuoteCalculator.tsx       Isla: calculadora de envío
-    Proof.astro               Testimonios (reservado)
-    FAQ.astro                 Preguntas con <details> nativo
-    CtaBand.astro, Footer.astro
-  styles/global.css           Tailwind, tokens de marca, fuente Geist autoalojada
+index.html        Página principal (todas las secciones)
+terminos.html     Términos y condiciones (marcador)
+privacidad.html   Política de privacidad (marcador)
+css/styles.css    Todos los estilos
+js/main.js        Pestañas de beneficios y calculadora (≈100 líneas, sin dependencias)
+fonts/            Geist, servida desde el propio sitio
+img/              favicon, ícono de Apple e imagen para compartir (og.png)
+robots.txt, sitemap.xml
 ```
 
-## Notas de SEO
+El menú de celular y las preguntas frecuentes usan `<details>` nativo y las animaciones son CSS: funcionan aunque JavaScript esté desactivado. Sin JS, la calculadora muestra el precio inicial y las pestañas quedan en "Para comercios".
 
-- `DeliveryService` no existe en schema.org: el servicio se describe como `Service` con `serviceType`, que es lo que Google reconoce.
-- Google muestra resultados enriquecidos de FAQ solo para sitios de gobierno y salud. El marcado `FAQPage` sigue siendo válido, pero no esperes ver las preguntas desplegadas en los resultados.
-- Las preguntas del FAQ y del JSON-LD salen del mismo array (`faqs`), así el texto siempre coincide.
+## Cómo editar
 
-## Diseño
+- **Textos:** directo en `index.html`. Cada sección es un `<section>` con su `id` (`soluciones`, `beneficios`, `como-funciona`, `cotizar`, `faq`).
+- **Tarifas de la calculadora:** el objeto `PRICING` al principio de `js/main.js`. Cuando tengas los valores reales, poné `IS_EXAMPLE: false` y desaparece el aviso "Valores de ejemplo".
+- **Preguntas frecuentes:** están en dos lugares que tienen que coincidir: en el HTML (sección `#faq`) y en el bloque `<script type="application/ld+json">` del `<head>` (Schema.org `FAQPage`).
+- **Header y footer:** están repetidos en las tres páginas. Si cambiás uno, cambialo en `index.html`, `terminos.html` y `privacidad.html`.
+- **Año del footer:** está escrito a mano (`© 2026`); actualizalo cada año.
 
-`PRODUCT.md` y `DESIGN.md` describen el producto y el sistema visual para la skill Impeccable; `.impeccable/surfaces/` guarda la dirección de diseño de esta página.
+### Sobre los estilos
+
+`css/styles.css` es CSS normal, generado a partir de Tailwind. En el HTML vas a ver clases como `rounded-2xl`, `text-slate-500` o `sm:text-6xl`: **solo funcionan las que ya existen en ese archivo**, que son todas las que usa la página. Para algo nuevo, escribí tu propia regla al final de `styles.css`:
+
+```css
+.mi-banner {
+  background: var(--color-brand-50);
+  color: var(--color-brand-700);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+}
+```
+
+Los colores, sombras y la fuente están como variables al principio del archivo (`--color-brand-600`, `--shadow-card`, `--font-sans`, etc.).
+
+La ilustración del hero es un SVG dentro de `index.html`. Sus animaciones están en `styles.css`, en las reglas que llevan `[data-illo]`.
+
+## Antes de publicar: marcadores para reemplazar
+
+Todo lo que está entre `[CORCHETES]` es un dato que falta.
+
+| Dónde | Qué |
+|---|---|
+| `index.html`, `terminos.html`, `privacidad.html`, `robots.txt`, `sitemap.xml` | Reemplazá `https://repa.example` por tu dominio (buscar y reemplazar en todos los archivos). |
+| Los tres `.html` | Enlaces de iniciar sesión, alta de comercios, alta de repartidores, app repa PRO y redes (hoy apuntan a `#`). |
+| Footer | `[EMAIL DE CONTACTO]` y `[NÚMERO DE WHATSAPP]`. |
+| `js/main.js` → `PRICING` | Tarifa mínima y precio por km. |
+| `index.html` (preguntas y JSON-LD) | `[TARIFA MÍNIMA]`, `[PRECIO POR KM]`, integraciones, requisitos para repartidores y `[FRECUENCIA DE PAGO]`. También `[PRECIO]` en la vista del pedido. |
+| `terminos.html`, `privacidad.html` | Textos legales (privacidad según la Ley 25.326). |
+
+Revisá también que sean ciertas estas afirmaciones: "sin comisiones sobre el valor de tu venta" y "flota verificada".
+
+La sección de testimonios de la versión Astro no está acá: solo se mostraba en desarrollo y no tiene contenido real todavía.
+
+## Publicar
+
+Subí la carpeta completa tal cual a cualquier hosting estático (Netlify, Vercel, Cloudflare Pages, GitHub Pages o un hosting común por FTP). No hay comando de build.
+
+Activá la compresión gzip o brotli en el hosting (casi todos la traen prendida): sin ella, el HTML pesa unos 120 KB en vez de 25 KB.
+
+## Rendimiento
+
+Lighthouse, servido con compresión: 100 en rendimiento, accesibilidad, buenas prácticas y SEO, en celular y escritorio. La página completa pesa unos 58 KB comprimida (HTML, CSS, fuente y JS). Es el mismo peso que la versión Astro, porque esa versión solo cargaba React cuando las islas entraban en pantalla.

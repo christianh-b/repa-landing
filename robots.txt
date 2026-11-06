@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# [DOMINIO] Actualizá esta URL junto con las de los <head> (ver README).
+Sitemap: https://repa.example/sitemap.xml

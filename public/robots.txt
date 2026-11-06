@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# [DOMINIO] Actualizá esta URL junto con SITE_URL en astro.config.mjs.
-Sitemap: https://repa.example/sitemap-index.xml
